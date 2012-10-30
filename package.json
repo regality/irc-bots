@@ -1,0 +1,23 @@
+{
+  "name": "irc-bot",
+  "version": "0.0.0",
+  "description": "ossum",
+  "main": "index.js",
+  "dependencies": {
+    "anagram": "~0.4.0",
+    "irc": "~0.3.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/regality/irc-bots.git"
+  },
+  "keywords": [
+    "rawr"
+  ],
+  "author": "Adam",
+  "license": "opan saurce lol"
+}
