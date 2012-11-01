@@ -1,10 +1,14 @@
+var bot = require('./bot');
+
 [
   'ossum',
-  'l33t',
+  //'l33t',
   'eval',
   'anagram',
+  //'fortune',
   'teen-girl'
-].forEach(function(bot) {
-  require('./bots/' + bot);
-  console.log('starting ' + bot + ' bot');
+].forEach(function(name) {
+  console.log('starting ' + name + ' bot');
+  var fn = require('./bots/' + name);
+  bot(name, fn);
 });

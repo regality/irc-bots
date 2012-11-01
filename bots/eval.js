@@ -1,17 +1,40 @@
-require("../bot")('eval', evalText);
+function evalText(text, cb) {
+  process.nextTick(function() {
+    try {
+      var stahp = getStahp();
+      (function() {
+        var wrapped = 'with(stahp){' + text + '}';
+        var response = eval(wrapped);
+        cb(null, response);
+      }).call({});
+    } catch (e) {
+      cb(null, e.message);
+    }
+  });
+}
 
-function evalText(text) {
+
+function getStahp() {
   var stahp = {
-    require: function(){},
-    process: {},
+    require:       function(){},
+    eval:          function(){},
+    clearTimeout:  function(){},
+    clearInterval: function(){},
+    setTimeout:    function(){},
+    setInterval:   function(){},
+    process:       {},
+    global:        {},
+    GLOBAL:        {},
+    root:          {},
+    module:        {},
+    exports:       {},
+    __filename:    '',
+    __dirname:     '',
     console: {
       log: function(msg) { return msg; }
     }
   }
-  try {
-    return eval('with(stahp){' + text + '}');
-  } catch (e) {
-    return e.message;
-  }
+  return stahp;
 }
 
+module.exports = evalText;

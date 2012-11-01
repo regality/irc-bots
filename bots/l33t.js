@@ -1,5 +1,3 @@
-require("../bot")('l33t', l33t);
-
 function l33t(str) {
   return str.split('').map(l33tLetter).join('');
 }
@@ -19,3 +17,4 @@ var map = {
   b: '&'
 };
 
+module.exports = l33t;

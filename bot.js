@@ -14,7 +14,7 @@ function bot(name, onMessage) {
   function say(msg) {
     if (msg) {
       console.log(name + ' says: ' + msg);
-      bot.say(channel, msg);
+      bot.say(channel, '-- ' + msg);
     }
   }
 
