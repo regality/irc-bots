@@ -7,7 +7,7 @@ module.exports = bot;
 
 function bot(name, onMessage) {
   // Create the bot name
-  var bot = new irc.Client(server, name + '-bot', {
+  var bot = new irc.Client(server, 'bot-' + name, {
     channels: [channel]
   });
 
@@ -21,14 +21,14 @@ function bot(name, onMessage) {
   if (onMessage.length === 1) {
     // Listen for a message
     bot.addListener("message", function(from, to, text, message) {
-      if (from.match(/-bot\d*$/)) return;
+      if (from.match(/^bot-/)) return;
       var response = onMessage(text);
       say(response)
     });
   } else {
     // Listen for a message
     bot.addListener("message", function(from, to, text, message) {
-      if (from.match(/-bot\d*$/)) return;
+      if (from.match(/^bot-/)) return;
       onMessage(text, function(err, response) {
         if (err) return say(err.message);
         say(response)
